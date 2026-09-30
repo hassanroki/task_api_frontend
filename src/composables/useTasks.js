@@ -2,7 +2,7 @@ import { ref, computed } from "vue";
 import axios from "axios";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "https://task-backend.larasoftbd.com/api";
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8081/api";
 
 // Axios instance with default config
 const api = axios.create({
@@ -47,7 +47,7 @@ export function useTasks(initialTasks = []) {
     loading.value = true;
     error.value = null;
     try {
-      const { data } = await api.get("https://task-backend.larasoftbd.com/api/tasks");
+      const { data } = await api.get("http://127.0.0.1:8081/api/tasks");
       tasks.value = Array.isArray(data.data) ? data.data : data;
     } catch (err) {
       console.error("Error fetching tasks:", err);
@@ -59,7 +59,7 @@ export function useTasks(initialTasks = []) {
 
   const addTask = async (taskData) => {
     try {
-      const { data } = await api.post("https://task-backend.larasoftbd.com/api/tasks", {
+      const { data } = await api.post("http://127.0.0.1:8081/api/tasks", {
         title: taskData.title,
         description: taskData.description,
         status: taskData.status || "pending",
@@ -81,7 +81,7 @@ export function useTasks(initialTasks = []) {
 
   const updateTask = async (taskData) => {
     try {
-      const { data } = await api.put(`https://task-backend.larasoftbd.com/api/tasks/${taskData.id}`, {
+      const { data } = await api.put(`http://127.0.0.1:8081/api/tasks/${taskData.id}`, {
         title: taskData.title,
         description: taskData.description,
         status: taskData.status || "pending",
@@ -101,7 +101,7 @@ export function useTasks(initialTasks = []) {
 
   const deleteTask = async (id) => {
     try {
-      await api.delete(`https://task-backend.larasoftbd.com/api/tasks/${id}`);
+      await api.delete(`http://127.0.0.1:8081/api/tasks/${id}`);
       tasks.value = tasks.value.filter((t) => t.id !== id);
     } catch (err) {
       console.error("Error deleting task:", err);
@@ -114,7 +114,7 @@ export function useTasks(initialTasks = []) {
     if (task) {
       const newStatus = task.status === "done" ? "pending" : "done";
       try {
-        await api.put(`https://task-backend.larasoftbd.com/api/tasks/${id}`, { status: newStatus });
+        await api.put(`http://127.0.0.1:8081/api/tasks/${id}`, { status: newStatus });
         task.status = newStatus;
       } catch (err) {
         console.error("Error toggling task:", err);

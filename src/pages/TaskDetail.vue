@@ -15,7 +15,7 @@ const loading = ref(true);
 onMounted(async () => {
   try {
     const res = await axios.get(
-      `https://task-backend.larasoftbd.com/api/task-list/${postID}`,
+      `http://127.0.0.1:8081/api/task-list/${postID}`,
     );
     post.value = res.data.data; // ⚠️ important
   } catch (err) {
