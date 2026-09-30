@@ -7,7 +7,7 @@ import axios from "axios";
 
 const router = useRouter();
 
-axios.defaults.baseURL = "https://task-backend.larasoftbd.com/api";
+axios.defaults.baseURL = "http://127.0.0.1:8081/api";
 
 const formData = ref({
   fullName: "",

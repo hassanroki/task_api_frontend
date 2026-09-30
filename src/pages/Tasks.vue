@@ -15,7 +15,7 @@ const fetchTasks = async () => {
   loading.value = true;
   try {
     const response = await axios.get(
-      "https://task-backend.larasoftbd.com/api/task-list",
+      "http://127.0.0.1:8081/api/task-list",
     );
     tasks.value = response.data.data;
   } catch (error) {

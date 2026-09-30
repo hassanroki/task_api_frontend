@@ -7,7 +7,7 @@ The dashboard is now fully integrated with your Laravel API using `Route::apiRes
 
 ### 1. Create `.env.local` file (already created)
 ```
-VITE_API_URL=https://task-backend.larasoftbd.com
+VITE_API_URL=http://127.0.0.1:8081
 ```
 
 ## Database Schema Mapping
@@ -125,7 +125,7 @@ localStorage.setItem('authToken', response.data.token)
 ## Troubleshooting
 
 ### Tasks not loading?
-- Check if Laravel API is running on `https://task-backend.larasoftbd.com/`
+- Check if Laravel API is running on `http://127.0.0.1:8081/`
 - Check browser console for API errors
 - Verify authentication token is stored in localStorage
 
